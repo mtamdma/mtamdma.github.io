@@ -3,18 +3,18 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Krosis v0.1</title>
+    <title>Krosis v0.1.1a</title>
   </head>
   <body>
     <form>
       <input  type = "text" id="search" placeholder="Search" autocomplete = "off" />
-      <select id="type" onchange = "GetVal('type')" hidden="true">
+      <select hidden id="type" onchange = "GetVal('type')">
         <option value="Ingredient" checked>Ингредиент</option>
         <option value="Effect">Эффект</option>
       </select>
     </form>
     <div id="data"></div>
-    <script src = "./data.json"></script>
+    <div id="calculated"></div>
     <script type = "text/javascript" src = "https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script type = "text/javascript" src = "./script.js"></script>
   </body>
