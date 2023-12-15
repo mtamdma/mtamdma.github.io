@@ -47,10 +47,10 @@ function S_Ingredients(){
 function tgEffects(id){
 	let efflist=document.getElementById("efflist"+id);
 	if (efflist.innerHTML==""){
-		efflist.innerHTML+='<div><button class="cheff" id="ch'+idata[id].EID1+'" onclick=CalcIng('+id+','+idata[id].EID1+')>'+edata[idata[id].EID1].EFFECT+'</button></div>';
+		efflist.innerHTML+='<br><div><button class="cheff" id="ch'+idata[id].EID1+'" onclick=CalcIng('+id+','+idata[id].EID1+')>'+edata[idata[id].EID1].EFFECT+'</button></div>';
 		efflist.innerHTML+='<div><button class="cheff" id="ch'+idata[id].EID2+'" onclick=CalcIng('+id+','+idata[id].EID2+')>'+edata[idata[id].EID2].EFFECT+'</button></div>';
 		efflist.innerHTML+='<div><button class="cheff" id="ch'+idata[id].EID3+'" onclick=CalcIng('+id+','+idata[id].EID3+')>'+edata[idata[id].EID3].EFFECT+'</button></div>';
-		efflist.innerHTML+='<div><button class="cheff" id="ch'+idata[id].EID1+'" onclick=CalcIng('+id+','+idata[id].EID4+')>'+edata[idata[id].EID4].EFFECT+'</button></div>';
+		efflist.innerHTML+='<div><button class="cheff" id="ch'+idata[id].EID1+'" onclick=CalcIng('+id+','+idata[id].EID4+')>'+edata[idata[id].EID4].EFFECT+'</button></div></br>';
 	}
 	else{efflist.innerHTML="";}
 	};
