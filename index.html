@@ -4,17 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Krosis v0.1.1a</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <form>
-      <input  type = "text" id="search" placeholder="Search" autocomplete = "off" />
-      <select hidden id="type" onchange = "GetVal('type')">
-        <option value="Ingredient" checked>Ингредиент</option>
-        <option value="Effect">Эффект</option>
-      </select>
-    </form>
-    <div id="data"></div>
-    <div id="calculated"></div>
+    <div class="main_container">
+      <div class="sidebar">
+        <button class="btn" onclick=Principles()>ПРИНЦИПЫ АЛХИМИИ</button>
+        <button class="btn" onclick=Ingredients()>ИНГРЕДИЕНТЫ</button>
+        <button class="btn" onclick=Effects()>ЭФФЕКТЫ</button>
+        <button class="btn" onclick=Calculator()>КАЛЬКУЛЯТОР ЗЕЛИЙ</button>
+        
+      </div>
+      <div class="content" id="content">
+        <h1>Кросис</h1>
+        <p>Кросис - один из драконьих жрецов в мире Древних Свитков. С драконьего языка его имя переводится как "скорбь", или же "мои извинения"<span class="spoiler"> за то, что что-то не работает</span></p>
+        Маска Кросиса помогает носителю, помимо прочего, создавать лучшие зелья
+      </div>
+    </div>
     <script type = "text/javascript" src = "https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script type = "text/javascript" src = "./script.js"></script>
   </body>
