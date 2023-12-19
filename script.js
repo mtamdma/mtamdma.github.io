@@ -2577,7 +2577,7 @@ function Calculate() {
 		target = document.getElementById("calculated");
 		document.getElementById("controls").innerHTML=
 			'<div><button class="btn-cc" onclick="Calculator()">ВЕРНУТЬСЯ К ВЫБОРУ ЭФФЕКТОВ</button>'+
-			'<div class="potfilters"><input type="text" placeholder="Фильтр по ингредиенту"></div>'
+			'<div class="potfilters"><input hidden type="text" placeholder="Фильтр по ингредиенту"></div>'
 		for (let pot of pots) { //potion, potname, potefs
 			pid='';
 			pname=[]
