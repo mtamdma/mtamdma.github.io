@@ -66,20 +66,34 @@ function Calculate() {
 			pots = Pots1(effs[0].value)
 		} else {
 			pots = tpots;
-		}
+		};
 		pots = pots.sort(function(a, b) {
-			if (a[1][0][2] > b[1][0][2]) {
+			if (a[1][0][1][1] < b[1][0][1][1]) {
 				return 1
 			} else {
 				return -1
 			};
-		})
+		});
+		pots = pots.sort(function(a, b) {
+			if (a[1][0][1][0] < b[1][0][1][0]) {
+				return 1
+			} else {
+				return -1
+			};
+		});
 		target = document.getElementById("calcarea");
 		target.innerHTML = '<div id="calculated" class="pots"></div>';
 		target = document.getElementById("calculated");
 		document.getElementById("controls").innerHTML =
 			'<div><button class="btn-cc" onclick="Calculator()">ВЕРНУТЬСЯ К ВЫБОРУ ЭФФЕКТОВ</button>' +
 			'<div class="potfilters"><input id="ifilter" type="text" placeholder="Фильтр по ингредиенту"></div>'
+		target.innerHTML+='<div class="pt">'+
+		'<div class="sh">Ингредиенты</div>'+
+		'<div class="sh">Эффекты</div>'+
+		'<div class="sh">СИЛ</div>'+
+		'<div class="sh">ВРМ</div>'+
+		'<div class="sh">СТМ</div>'
+		'</div>'
 		for (let pot of pots) { //potion, potname, potefs
 			pid = '';
 			pname = []
@@ -88,27 +102,29 @@ function Calculate() {
 				pname.push(ingredient)
 			};
 			//console.log(pid);
-			target.innerHTML += '<div class="potion"><div class="potname" id="n' + pid + '"></div><div class="potefs" id="e' + pid + '"></div></div>';
-			target = document.getElementById("n" + pid);
-			for (let i of pname) {
-				target.innerHTML += idata[i].NAME + '<br>+<br>';
-			};
-			target.innerHTML = target.innerHTML.slice(0, -9);
-			target = document.getElementById("e" + pid);
-			for (e of pot[1]) {
-				target.innerHTML += edata[e[0]].EFFECT;
-				if (![0, 1].includes(e[1][0])) {
-					target.innerHTML += " СИЛ *" + e[1][0]
-				};
-				if (![0, 1].includes(e[1][1])) {
-					target.innerHTML += " ВРМ *" + e[1][1]
-				};
-				if (![0, 1].includes(e[1][2])) {
-					target.innerHTML += " СТМ *" + e[1][2]
-				};
-				target.innerHTML += "<br>";
+			
+			target.innerHTML += '<div class="potion" id="p'+pid+'">'+
+			'<div class="potname" id="n' + pid + '"></div>'+
+			'<div class="potefs" id="e' + pid + '"></div>'+
+			'<div class="mods" id="m'+pid+'"></div>'+
+			'<div class="mods" id="t'+pid+'"></div>'+
+			'<div class="mods" id="v'+pid+'"></div>'+
+			'</div>';
 
+			target = document.getElementById("p" + pid);
+			for (let i of pname) {
+				target.children[0].innerHTML += idata[i].NAME + '<br>+<br>';
+			};
+			target.children[0].innerHTML = target.children[0].innerHTML.slice(0, -9);
+			for (e of pot[1]) {
+				target.children[1].innerHTML +=edata[e[0]].EFFECT+'<br>';
+				target.children[2].innerHTML +=Math.round(edata[e[0]].MAG*e[1][0]*4*1.5)+'<br>';
+				target.children[3].innerHTML +=Math.round(edata[e[0]].DUR*e[1][1])+'<br>';
 			}
+			let cost=edata[e[0]].COST;
+			cost*=Math.pow(edata[e[0]].MAG*e[1][0]*4*1.5,1.1);
+			if (edata[e[0]].DUR!=0){cost*=Math.pow(edata[e[0]].DUR*e[1][1]/10,1.1)};
+			target.children[4].innerHTML +=Math.floor(cost)+'<br>';
 			target = document.getElementById("calculated");
 
 
